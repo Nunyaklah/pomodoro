@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 py-6 flex flex-col justify-center font-inter">
-    <div class="relative py-3 sm:max-w-xl sm:mx-auto w-full px-4 sm:px-0">
+  <div class="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 py-4 flex flex-col justify-center font-inter">
+    <div class="relative py-2 sm:py-3 sm:max-w-xl sm:mx-auto w-full px-3 sm:px-0">
       <!-- Floating card with glass effect -->
-      <div class="relative bg-white/80 backdrop-blur-lg shadow-2xl sm:rounded-3xl px-4 py-8 sm:p-12 border border-white/20">
+      <div class="relative bg-white/80 backdrop-blur-lg shadow-2xl sm:rounded-3xl px-3 py-6 sm:px-4 sm:py-8 md:p-12 border border-white/20">
         <!-- Decorative elements -->
         <div class="absolute -top-10 -left-10 w-32 h-32 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
         <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
@@ -22,11 +22,11 @@
           </div>
 
           <!-- Timer Mode Selection -->
-          <div class="flex justify-center space-x-2 mb-12">
+          <div class="flex flex-wrap justify-center gap-2 mb-8 sm:mb-12">
             <button 
               @click="setMode('focus')" 
               :class="[
-                'px-6 py-3 rounded-xl transition-all duration-300 shadow-sm',
+                'px-4 sm:px-6 py-2 sm:py-3 rounded-xl transition-all duration-300 shadow-sm text-sm sm:text-base',
                 mode === 'focus' 
                   ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-purple-200' 
                   : 'bg-white/50 text-gray-600 hover:bg-white/80'
@@ -64,17 +64,17 @@
           <!-- Timer Display -->
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-r from-violet-200 to-pink-200 rounded-full filter blur-3xl opacity-30"></div>
-            <div class="relative text-8xl font-bold text-center mb-12 font-mono tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
+            <div class="relative text-6xl sm:text-7xl md:text-8xl font-bold text-center mb-8 sm:mb-12 font-mono tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
               {{ formatTime }}
             </div>
           </div>
 
           <!-- Controls -->
-          <div class="flex justify-center space-x-4 mb-12">
+          <div class="flex flex-wrap justify-center gap-3 mb-8 sm:mb-12">
             <button 
               @click="startTimer" 
               :class="[
-                'flex items-center px-8 py-4 rounded-xl transition-all duration-300 shadow-lg',
+                'flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 shadow-lg text-sm sm:text-base',
                 isRunning
                   ? 'opacity-50 cursor-not-allowed'
                   : 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:translate-y-[-1px] hover:shadow-xl active:translate-y-[1px]'
@@ -107,9 +107,9 @@
           </div>
 
           <!-- Settings -->
-          <div class="settings mt-8 bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-            <div class="flex items-center justify-between mb-6">
-              <h2 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Settings</h2>
+          <div class="settings mt-6 sm:mt-8 bg-white/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg border border-white/20">
+            <div class="flex items-center justify-between mb-4 sm:mb-6">
+              <h2 class="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Settings</h2>
               <button 
                 @click="isSettingsVisible = !isSettingsVisible"
                 class="text-gray-500 hover:text-gray-700 transition-colors duration-200"
@@ -123,13 +123,13 @@
                  class="space-y-6 transition-all duration-300"
                  :class="isSettingsVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4'"
             >
-              <div class="flex items-center justify-between gap-4">
-                <label class="text-gray-700 font-medium">Focus Time (minutes)</label>
+              <div class="flex items-center justify-between gap-2 sm:gap-4">
+                <label class="text-gray-700 font-medium text-sm sm:text-base">Focus Time (min)</label>
                 <input 
                   type="number" 
                   v-model="settings.focusTime" 
                   :class="[
-                    'w-24 px-4 py-3 border rounded-xl bg-white/70 backdrop-blur-sm transition-all duration-200',
+                    'w-20 sm:w-24 px-3 sm:px-4 py-2 sm:py-3 border rounded-xl bg-white/70 backdrop-blur-sm transition-all duration-200 text-sm sm:text-base',
                     isRunning ? 'opacity-50 cursor-not-allowed' : 'focus:ring-2 focus:ring-purple-500 focus:border-purple-500 hover:bg-white'
                   ]"
                   :disabled="isRunning"
